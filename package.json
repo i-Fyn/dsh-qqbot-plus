@@ -45,11 +45,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_NAME/dsh-qqbot-plus.git"
+    "url": "https://github.com/i-Fyn/dsh-qqbot-plus.git"
   },
-  "homepage": "https://github.com/YOUR_NAME/dsh-qqbot-plus#readme",
+  "homepage": "https://github.com/i-Fyn/dsh-qqbot-plus#readme",
   "bugs": {
-    "url": "https://github.com/YOUR_NAME/dsh-qqbot-plus/issues"
+    "url": "https://github.com/i-Fyn/dsh-qqbot-plus/issues"
   },
   "dsh": {
     "bundle": {
