@@ -25,6 +25,18 @@
 - **重启接话**：宿主重启后不再往旧会话里灌消息，改成给一个 `qq_resume_check` 工具，让模型自己决定要不要接着上一轮说话。
 - **人设与规则可覆盖**：`persona.md` / `rules.md` / `portrait.md` 三个文件放在数据目录里，改了立刻生效，不用动代码。
 
+## 来源与授权
+
+这个仓库不是从零写的，几块东西各有出处，按 MIT 协议保留原许可：
+
+| 部分 | 来源 | 许可 |
+|---|---|---|
+| QQ 接入骨架（消息收发、一对多会话、工具闸门） | [tencent-connect/dsh-qqbot](https://github.com/tencent-connect/dsh-qqbot) | MIT |
+| 人味（humanlike，7 组工具 + 状态段） | npm [`cortico-world-humanlike-alont1`](https://www.npmjs.com/package/cortico-world-humanlike-alont1) v0.2.2-rc.1，作者 ALonT1 | MIT |
+| 长期记忆、一天、出门、闹钟、重启接话 | 本 fork 新增 | 同本项目 |
+
+搬过来的部分基本保持原样，只把宿主接口换成了 dsh 的 `tools.register` 与系统提示段。如果你要用的是干净的原始实现，直接去上面两个上游。
+
 ## 我开始用它之前
 
 1. 你需要一个 QQ 机器人（QQ 开放平台注册，拿到 `appId` 和 `appSecret`）。
