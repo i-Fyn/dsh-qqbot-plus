@@ -2,27 +2,34 @@
 
 <img width="120" src="https://img.shields.io/badge/🤖-QQ_Bot-blue?style=for-the-badge" alt="QQ Bot" />
 
-**基于 [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) (dsh) 的 QQ Bot 插件，将 DeepSeek AI 助手接入 QQ 私聊与群聊。**
+**把 QQ 接成 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的聊天渠道：私聊、群聊、语音、图片、文件都能收发。**
 
-[![npm version](https://img.shields.io/npm/v/@tencent-connect/dsh-qqbot)](https://www.npmjs.com/package/@tencent-connect/dsh-qqbot)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/tencent-connect/dsh-qqbot)](https://github.com/tencent-connect/dsh-qqbot)
 [![QQ Bot](https://img.shields.io/badge/QQ_Bot-API_v2-red)](https://bot.q.qq.com/wiki/)
-
-<br/>
 
 **[English](./README_EN.md) | 简体中文**
 
-扫码加入 QQ 群 / 频道
-
-<table>
-<tr>
-<td align="center" width="50%"><img src="./assets/docs/qqgroup.jpg" height="360" alt="QQ 群二维码" /><br /><b>QQ 开发者交流群</b><br /><sub>1群: 1032635674 · 2群: 1056948758</sub></td>
-<td align="center" width="50%"><img src="./assets/docs/qqchannel.jpg" height="360" alt="QQ 频道二维码" /><br /><b>QQ 开发者社区频道</b><br /><sub>频道号: 20dnumts4z</sub></td>
-</tr>
-</table>
-
 </div>
+
+> **这是个人 fork**：[tencent-connect/dsh-qqbot](https://github.com/tencent-connect/dsh-qqbot) 的深度改造版，不是官方包。上游提供 QQ 接入的基本骨架，这个 fork 在上面加了一整套「陪伴型机器人」的东西（见下）。装法、配置项、命令都沿用上游，文档里没特别说明的地方以上游为准。
+>
+> 仓库里只有编译后的 `lib/`（上游发布方式如此），没有 TypeScript 源码，所以不能在这里 `pnpm build`。
+
+## 这个 fork 多了什么
+
+- **人味（humanlike）**：交情账、共同经历、学习笔记、作息状态、惦记清单、只读观察，7 组工具 + 系统提示里的状态段，让 bot 有自己的关系和时间感，不是每轮重置的问答机。
+- **长期记忆（fishmemory）**：把对话转录成笔记（规矩 / 教训 / 事实 / 经过 / 人 / 待办），每轮现读索引，需要细节时再检索原话。
+- **一天（day）**：自己定起床点，开单 / 收单，想做的事进池子；空档会自己找下一件事。
+- **出门（map）**：记常去的地方，出门、回家、路上耗时，到点推一次「到了」。
+- **闹钟**：到某个钟点把自己叫醒去做一件具体的事（和定时任务分开）。
+- **重启接话**：宿主重启后不再往旧会话里灌消息，改成给一个 `qq_resume_check` 工具，让模型自己决定要不要接着上一轮说话。
+- **人设与规则可覆盖**：`persona.md` / `rules.md` / `portrait.md` 三个文件放在数据目录里，改了立刻生效，不用动代码。
+
+## 我开始用它之前
+
+1. 你需要一个 QQ 机器人（QQ 开放平台注册，拿到 `appId` 和 `appSecret`）。
+2. 这台机器上要装好 DeepSeek Harness。
+3. 凭据只写进 dsh profile 的 `cordis.patch.yml`，不要提交进仓库。
 
 ## 架构
 
@@ -234,7 +241,9 @@ sessionKey: `qqbot:${appId}:${scope}:${peerId}`，新会话铸造 UUID 会话 id
 - **问答互动** — 支持 `ask_user_question`，单选生成内联按钮（点一个其余变灰）、多选回复编号，逐题推进 + 问题级超时
 - **操作确认** — 支持 `approval/request`，关键操作通过「允许/拒绝」按钮请求用户确认
 
-## 本地开发
+## 本地开发（仅适用于有源码的完整仓库）
+
+> 本仓库只带编译产物 `lib/`，下面这些命令跑不通，保留是因为上游文档这么写。
 
 ```bash
 # 安装依赖
