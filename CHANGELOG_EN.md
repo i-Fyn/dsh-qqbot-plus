@@ -6,6 +6,13 @@ This file records significant dsh-qqbot updates from a product perspective, focu
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.1.5] - 2026-11-21
+
+### Fixed
+
+- **`ENOENT ... lstat '.../assets'` right after install**: the published tarball had no `assets` directory (`package.json` had no `files` allowlist), so the host failed to read the icon metadata and the plugin showed "package metadata error". `files` now lists `lib`, `locale`, `assets` and the root config files explicitly.
+- **`qq_draft` called from the console too**: the default rules said "reply with qq_draft" without checking the source, so host sessions built a draft and got rejected. The rules now check first — only messages with a `[私聊 …]` / `[群 …]` header come from QQ.
+
 ## [0.1.4] - 2026-11-21
 
 - Sticker thumbnails now default to 300px on the long edge instead of 360 (matches dsh-meme; 360 looked oversized in QQ)
