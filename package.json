@@ -121,5 +121,17 @@
   },
   "optionalDependencies": {
     "sharp": "^0.34.4"
-  }
+  },
+  "files": [
+    "lib",
+    "locale",
+    "cordis.patch.yml",
+    "cordis.yml",
+    "install.sh",
+    "CHANGELOG.md",
+    "CHANGELOG_EN.md",
+    "README.md",
+    "README_EN.md",
+    "LICENSE"
+  ]
 }
