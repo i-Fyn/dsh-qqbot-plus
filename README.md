@@ -70,6 +70,8 @@ QQ 用户 → QQ WebSocket → dsh-qqbot → ctx.agents → dsh agent loop → L
 
 <img src="./assets/docs/install.png" alt="端内添加插件" width="560" />
 
+> 端内安装若卡在 `sharp`（界面里看到 `ERR_PNPM_IGNORED_BUILDS`），按下面「装到一半可能卡在 `sharp`」那一段处理，再点一次安装。
+
 2. **连接**：左下角头像 → 设置 →「QQ 机器人」→ 手机 QQ 扫码连接
 
 <img src="./assets/docs/setting.png" alt="设置页扫码连接" width="560" />

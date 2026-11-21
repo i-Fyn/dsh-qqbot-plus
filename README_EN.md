@@ -48,6 +48,8 @@ No command line needed — everything happens inside the app:
 
 <img src="./assets/docs/install.png" alt="In-app plugin install" width="560" />
 
+> If the in-app install stalls on `sharp` (`ERR_PNPM_IGNORED_BUILDS`), apply the `allowBuilds` fix described below and install again.
+
 2. **Connect**: avatar at the bottom-left → Settings → "QQ Bots" → scan the QR code with mobile QQ
 
 <img src="./assets/docs/setting.png" alt="Settings QR binding" width="560" />
