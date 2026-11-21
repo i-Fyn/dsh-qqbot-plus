@@ -87,6 +87,17 @@ npx @deepseek-ai/dsh --profile qqbot
 
 > **提示**：建议升级至 `0.4.0` 以上版本扫码，支持点击链接在浏览器打开，避免部分终端二维码渲染错位的问题。
 
+> **装到一半可能卡在 `sharp`**：发表情图时用 `sharp` 缩尺寸，它是可选依赖。pnpm 默认不执行依赖的构建脚本，命令行安装会报
+> `ERR_PNPM_IGNORED_BUILDS: Ignored build scripts: sharp@0.34.5` 并中断。按它打印的那一行，在 profile 的
+> `pnpm-workspace.yaml` 末尾加上下面的内容，再跑一次同一条安装命令就过了：
+>
+> ```yaml
+> allowBuilds:
+>   sharp: true
+> ```
+>
+> 不加也能装（跳过 sharp），只是发出去的表情图不会被缩到长边 360。
+
 ### 方式三：本地路径安装
 
 ```bash
