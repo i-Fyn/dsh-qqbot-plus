@@ -34,7 +34,7 @@
 |---|---|---|
 | QQ 接入骨架（消息收发、一对多会话、工具闸门） | [tencent-connect/dsh-qqbot](https://github.com/tencent-connect/dsh-qqbot) | MIT |
 | 人味（humanlike，7 组工具 + 状态段） | npm [`cortico-world-humanlike-alont1`](https://www.npmjs.com/package/cortico-world-humanlike-alont1) v0.2.2-rc.1，作者 ALonT1 | MIT |
-| 长期记忆、一天、出门、闹钟、重启接话 | 本 fork 新增 | 同本项目 |
+| 长期记忆、闹钟、重启接话、表情包、设置页页签 | 本 fork 新增 | 同本项目 |
 
 搬过来的部分基本保持原样，只把宿主接口换成了 dsh 的 `tools.register` 与系统提示段。如果你要用的是干净的原始实现，直接去上面两个上游。
 
