@@ -55,11 +55,14 @@ QQ 用户 → QQ WebSocket → dsh-qqbot → ctx.agents → dsh agent loop → L
 
 ## 安装
 
+这个 fork 的包名是 `dsh-qqbot-plus`，安装用的是 GitHub 直连：`github:i-Fyn/dsh-qqbot-plus`。
+不要装 `@tencent-connect/dsh-qqbot` —— 那是上游原始版，没有这里加的人味、记忆、表情包。
+
 ### 方式一：桌面版安装（推荐）
 
 无需命令行，全程在应用内完成：
 
-1. **安装**：左侧栏点击「插件」→「添加插件」→ 输入 `@tencent-connect/dsh-qqbot@latest` → 安装并立即启动
+1. **安装**：左侧栏点击「插件」→「添加插件」→ 输入 `github:i-Fyn/dsh-qqbot-plus` → 安装并立即启动
 
 <img src="./assets/docs/install.png" alt="端内添加插件" width="560" />
 
@@ -73,7 +76,7 @@ QQ 用户 → QQ WebSocket → dsh-qqbot → ctx.agents → dsh agent loop → L
 
 ```bash
 # 安装到 profile
-npx @deepseek-ai/dsh plugin --profile qqbot add @tencent-connect/dsh-qqbot
+npx @deepseek-ai/dsh plugin --profile qqbot add github:i-Fyn/dsh-qqbot-plus
 
 # 启动
 npx @deepseek-ai/dsh --profile qqbot
@@ -84,8 +87,6 @@ npx @deepseek-ai/dsh --profile qqbot
 无端内绑定页的环境（如纯 CLI）可设置 `QQBOT_BIND_OPEN_BROWSER=1`，额外拉起系统浏览器扫码页作为降级通道。
 
 <img src="./assets/docs/qrcode.png" alt="二维码扫码示意图" width="280" />
-
-> **提示**：建议升级至 `0.4.0` 以上版本扫码，支持点击链接在浏览器打开，避免部分终端二维码渲染错位的问题。
 
 > **装到一半可能卡在 `sharp`**：发表情图时用 `sharp` 缩尺寸，它是可选依赖。pnpm 默认不执行依赖的构建脚本，命令行安装会报
 > `ERR_PNPM_IGNORED_BUILDS: Ignored build scripts: sharp@0.34.5` 并中断。按它打印的那一行，在 profile 的
@@ -98,26 +99,16 @@ npx @deepseek-ai/dsh --profile qqbot
 >
 > 不加也能装（跳过 sharp），只是发出去的表情图不会被缩到长边 360。
 
-### 方式三：本地路径安装
+### 方式三：本地目录安装
 
 ```bash
-# 构建
-cd /path/to/dsh-qqbot
-pnpm install && pnpm build
+git clone https://github.com/i-Fyn/dsh-qqbot-plus /path/to/dsh-qqbot-plus
 
-# 安装到 profile（本地路径）
-npx @deepseek-ai/dsh plugin --profile qqbot add /path/to/dsh-qqbot
+# 装到 profile（指向目录就行，仓库里已经是编译好的 lib/，不用构建）
+npx @deepseek-ai/dsh plugin --profile qqbot add /path/to/dsh-qqbot-plus
 
 # 启动
-export QQBOT_APPID="你的AppID" QQBOT_SECRET="你的AppSecret"
 npx @deepseek-ai/dsh --profile qqbot
-```
-
-### 方式四：--patch 开发模式
-
-```bash
-export QQBOT_APPID="你的AppID" QQBOT_SECRET="你的AppSecret"
-npx @deepseek-ai/dsh web --patch /path/to/dsh-qqbot/cordis.dev.yml
 ```
 
 ## 配置项
@@ -192,6 +183,8 @@ npx @deepseek-ai/dsh web --patch /path/to/dsh-qqbot/cordis.dev.yml
 | `/bot-help` | 查看所有指令 |
 
 ## 核心模块
+
+下面是上游的源码结构，用来说明代码怎么分的。本仓库只带编译后的 `lib/`，同名的文件后缀是 `.js` 而不是 `.ts`。
 
 ```
 src/

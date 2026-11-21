@@ -4,9 +4,8 @@
 
 **A QQ Bot plugin for [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) (dsh), connecting DeepSeek AI assistants to QQ private and group chats.**
 
-[![npm version](https://img.shields.io/npm/v/@tencent-connect/dsh-qqbot)](https://www.npmjs.com/package/@tencent-connect/dsh-qqbot)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/tencent-connect/dsh-qqbot)](https://github.com/tencent-connect/dsh-qqbot)
+[![GitHub stars](https://img.shields.io/github/stars/i-Fyn/dsh-qqbot-plus)](https://github.com/i-Fyn/dsh-qqbot-plus)
 [![QQ Bot](https://img.shields.io/badge/QQ_Bot-API_v2-red)](https://bot.q.qq.com/wiki/)
 
 <br/>
@@ -35,11 +34,14 @@ QQ User → QQ WebSocket → dsh-qqbot → ctx.agents → dsh agent loop → LLM
 
 ## Installation
 
+This fork's package name is `dsh-qqbot-plus`; install it straight from GitHub: `github:i-Fyn/dsh-qqbot-plus`.
+Do not install `@tencent-connect/dsh-qqbot` — that is the upstream original without the humanlike, memory and meme features added here.
+
 ### Method 1: Desktop install (recommended)
 
 No command line needed — everything happens inside the app:
 
-1. **Install**: click "Plugins" in the left sidebar → "Add plugin" → enter `@tencent-connect/dsh-qqbot@latest` → install and start now
+1. **Install**: click "Plugins" in the left sidebar → "Add plugin" → enter `github:i-Fyn/dsh-qqbot-plus` → install and start now
 
 <img src="./assets/docs/install.png" alt="In-app plugin install" width="560" />
 
@@ -53,7 +55,7 @@ Credentials are saved automatically after the scan; later launches need no re-sc
 
 ```bash
 # Add to a profile
-npx @deepseek-ai/dsh plugin --profile qqbot add @tencent-connect/dsh-qqbot
+npx @deepseek-ai/dsh plugin --profile qqbot add github:i-Fyn/dsh-qqbot-plus
 
 # Start
 npx @deepseek-ai/dsh --profile qqbot
@@ -65,28 +67,27 @@ In environments without the in-app binding page (pure CLI), set `QQBOT_BIND_OPEN
 
 <img src="./assets/docs/qrcode.png" alt="QR code scan example" width="280" />
 
-> **Note**: Upgrade to `0.4.0` or later for browser-link scanning, which avoids QR code misalignment in some terminals.
+> **It may stall on `sharp`**: `sharp` is an optional dependency used to downscale meme images. pnpm does not run dependency
+> build scripts by default, so a CLI install reports `ERR_PNPM_IGNORED_BUILDS: Ignored build scripts: sharp@0.34.5` and stops.
+> Add the following to the profile's `pnpm-workspace.yaml` and re-run the same install command:
+>
+> ```yaml
+> allowBuilds:
+>   sharp: true
+> ```
+>
+> It still installs without this (sharp is skipped), but outgoing meme images are not downscaled to a 360px long edge.
 
-### Method 3: Local path
+### Method 3: Local directory
 
 ```bash
-# Build
-cd /path/to/dsh-qqbot
-pnpm install && pnpm build
+git clone https://github.com/i-Fyn/dsh-qqbot-plus /path/to/dsh-qqbot-plus
 
-# Add to a profile (local path)
-npx @deepseek-ai/dsh plugin --profile qqbot add /path/to/dsh-qqbot
+# Add to a profile — point at the directory; lib/ is already built, no build step
+npx @deepseek-ai/dsh plugin --profile qqbot add /path/to/dsh-qqbot-plus
 
 # Start
-export QQBOT_APPID="yourAppID" QQBOT_SECRET="yourAppSecret"
 npx @deepseek-ai/dsh --profile qqbot
-```
-
-### Method 4: --patch dev mode
-
-```bash
-export QQBOT_APPID="yourAppID" QQBOT_SECRET="yourAppSecret"
-npx @deepseek-ai/dsh web --patch /path/to/dsh-qqbot/cordis.dev.yml
 ```
 
 ## Configuration
