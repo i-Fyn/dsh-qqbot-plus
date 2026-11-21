@@ -84,7 +84,10 @@ In environments without the in-app binding page (pure CLI), set `QQBOT_BIND_OPEN
 >   sharp: true
 > ```
 >
-> It still installs without this (sharp is skipped), but outgoing meme images are not downscaled to a 360px long edge.
+> It still installs without this: both the plugin and `sharp` end up in `node_modules` and `import('sharp')` works (sharp's
+> platform binaries come from prebuilt `@img/*` packages, not from the build script). pnpm just treats the skipped build
+> script as an error, so the command exits with code 1 and the UI shows the install as failed. The two lines above only make
+> that step pass.
 
 ### Method 3: Local directory
 
