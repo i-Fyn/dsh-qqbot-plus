@@ -6,6 +6,10 @@ This file records significant dsh-qqbot updates from a product perspective, focu
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.1.2] - 2026-11-21
+
+- Drop the duplicate "QQ bot" section in Settings; the sidebar panel already renders the same content.
+
 ## [0.1.1] - 2026-11-21
 
 ### Added
