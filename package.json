@@ -1,6 +1,6 @@
 {
   "name": "dsh-qqbot-plus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "icon": "./assets/icons/qq_logo.svg",
   "description": "在 QQ 私聊和群聊里直接对话 DeepSeek Harness。 Chat with DeepSeek Harness in QQ private and group chats.",
   "type": "module",
@@ -118,5 +118,8 @@
     "tsdown": "^0.22.2",
     "typescript": "^5.5.0",
     "vitest": "^4.1.8"
+  },
+  "optionalDependencies": {
+    "sharp": "^0.34.4"
   }
 }

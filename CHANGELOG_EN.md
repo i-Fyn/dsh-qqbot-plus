@@ -6,6 +6,23 @@ This file records significant dsh-qqbot updates from a product perspective, focu
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.1.1] - 2026-11-21
+
+### Added
+
+- **New "Persona" settings tab**: persona, portrait and the "how to reply in QQ" rules moved out of the bot tab into their own page; the bot tab keeps only connection and runtime settings.
+- **New "Memes" settings tab**: browse the library, edit captions and tags, change folders, prune stale entries, and click a thumbnail for a full-size preview.
+- **Meme library merged into the plugin**: the separate `dsh-fishmeme` plugin is folded in; data lives in `~/.dsh/dsh-qqbot-plus/memes`, and the old index is migrated on first run.
+- **Image downscaling works on all platforms**: uses optional `sharp` (npm fetches the prebuilt binary for your platform), long edge defaults to 360. If `sharp` is unavailable the original image is sent as-is.
+
+### Fixed
+
+- **Alarms could be lost silently**: a failed delivery was neither awaited nor written back, so a whole batch of due alarms disappeared; failures are now re-queued and the rest of the batch is preserved.
+- **Emotion notes never reached the prefix**: the identity key is an openid string, and an old numeric regex filtered every entry out.
+- **Partial state files**: settings / runtime / meme index and friends are now written atomically, so a crash can no longer leave a broken JSON that resets your settings.
+- **Panel turned into bare HTML after switching tabs**: the stylesheet lived inside the bot tab component and was removed with it on unmount; it is now shared by the whole page.
+- **Crash when cancelling a draft from a console session**: `record` may be undefined; switched to optional chaining.
+
 ## [0.5.5] - 2026-10-30
 
 ### Fixed
