@@ -6,6 +6,10 @@
 
 格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)。
 
+## [0.1.3] - 2026-11-21
+
+- 依赖 `sharp` 抬到 `^0.35.5`：这一版没有 `install` 脚本，安装不再被 pnpm 的构建脚本保护拦住，profile 里也不用再加 `allowBuilds`
+
 ## [0.1.2] - 2026-11-21
 
 - 设置窗口里不再重复注册「QQ 机器人」栏目：侧栏主面板已是同一份内容，只保留侧栏入口。

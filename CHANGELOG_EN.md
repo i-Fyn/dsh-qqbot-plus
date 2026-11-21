@@ -6,6 +6,10 @@ This file records significant dsh-qqbot updates from a product perspective, focu
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.1.3] - 2026-11-21
+
+- Bumped `sharp` to `^0.35.5`: this release has no `install` script, so installs are no longer blocked by pnpm's build-script guard and no `allowBuilds` entry is needed
+
 ## [0.1.2] - 2026-11-21
 
 - Drop the duplicate "QQ bot" section in Settings; the sidebar panel already renders the same content.

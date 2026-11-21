@@ -70,7 +70,7 @@ QQ 用户 → QQ WebSocket → dsh-qqbot → ctx.agents → dsh agent loop → L
 
 <img src="./assets/docs/install.png" alt="端内添加插件" width="560" />
 
-> 端内安装若卡在 `sharp`（界面里看到 `ERR_PNPM_IGNORED_BUILDS`），按下面「装到一半可能卡在 `sharp`」那一段处理，再点一次安装。
+> 端内安装若卡在 `sharp`（界面里看到 `ERR_PNPM_IGNORED_BUILDS`）——只有 0.1.2 及更早会这样——按下面「关于 `sharp`」那一段处理，再点一次安装。
 
 2. **连接**：左下角头像 → 设置 →「QQ 机器人」→ 手机 QQ 扫码连接
 
@@ -97,7 +97,10 @@ npx @deepseek-ai/dsh --profile qqbot
 
 <img src="./assets/docs/qrcode.png" alt="二维码扫码示意图" width="280" />
 
-> **装到一半可能卡在 `sharp`**：发表情图时用 `sharp` 缩尺寸，它是可选依赖。pnpm 默认不执行依赖的构建脚本，命令行安装会报
+> **关于 `sharp`**：发表情图时用 `sharp` 缩尺寸，它是可选依赖。**0.1.3 起依赖 `sharp@^0.35.5`**，这一版没有 `install` 脚本，
+> 安装不会再被打断，不需要在 profile 里加任何东西。
+>
+> 只有用 0.1.2 或更早（`sharp@0.34.x`）时才会撞上：pnpm 默认不执行依赖的构建脚本，命令行安装会报
 > `ERR_PNPM_IGNORED_BUILDS: Ignored build scripts: sharp@0.34.5` 并中断。按它打印的那一行，在 profile 的
 > `pnpm-workspace.yaml` 末尾加上下面的内容，再跑一次同一条安装命令就过了：
 >
@@ -106,8 +109,8 @@ npx @deepseek-ai/dsh --profile qqbot
 >   sharp: true
 > ```
 >
-> 不加的话实测也能装上：插件和 `sharp` 都会进 `node_modules`，`import('sharp')` 正常可用（sharp 的平台二进制来自 `@img/*` 预编译包，不依赖构建脚本）。
-> 只是 pnpm 把「跳过了构建脚本」当错误，命令会以退出码 1 结束，界面上显示成安装失败。加那两行只是让这一步变绿。
+> 不加也能装上：插件和 `sharp` 都会进 `node_modules`，`import('sharp')` 正常可用（sharp 的平台二进制来自 `@img/*` 预编译包，不依赖构建脚本）。
+> 只是 pnpm 把「跳过了构建脚本」当错误，命令会以退出码 1 结束，界面上显示成安装失败。
 
 ### 方式三：本地目录安装
 

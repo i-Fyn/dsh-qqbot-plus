@@ -48,7 +48,7 @@ No command line needed — everything happens inside the app:
 
 <img src="./assets/docs/install.png" alt="In-app plugin install" width="560" />
 
-> If the in-app install stalls on `sharp` (`ERR_PNPM_IGNORED_BUILDS`), apply the `allowBuilds` fix described below and install again.
+> If the in-app install stalls on `sharp` (`ERR_PNPM_IGNORED_BUILDS`) — only possible on 0.1.2 or earlier — apply the `allowBuilds` fix described below and install again.
 
 2. **Connect**: avatar at the bottom-left → Settings → "QQ Bots" → scan the QR code with mobile QQ
 
@@ -75,9 +75,12 @@ In environments without the in-app binding page (pure CLI), set `QQBOT_BIND_OPEN
 
 <img src="./assets/docs/qrcode.png" alt="QR code scan example" width="280" />
 
-> **It may stall on `sharp`**: `sharp` is an optional dependency used to downscale meme images. pnpm does not run dependency
-> build scripts by default, so a CLI install reports `ERR_PNPM_IGNORED_BUILDS: Ignored build scripts: sharp@0.34.5` and stops.
-> Add the following to the profile's `pnpm-workspace.yaml` and re-run the same install command:
+> **About `sharp`**: `sharp` is an optional dependency used to downscale meme images. **Since 0.1.3 it depends on `sharp@^0.35.5`**,
+> which has no `install` script — installation no longer stalls and nothing has to be added to the profile.
+>
+> Only 0.1.2 and earlier (`sharp@0.34.x`) hit this: pnpm does not run dependency build scripts by default, so a CLI install
+> reports `ERR_PNPM_IGNORED_BUILDS: Ignored build scripts: sharp@0.34.5` and stops. Add the following to the profile's
+> `pnpm-workspace.yaml` and re-run the same install command:
 >
 > ```yaml
 > allowBuilds:
