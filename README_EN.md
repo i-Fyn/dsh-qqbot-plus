@@ -34,14 +34,17 @@ QQ User → QQ WebSocket → dsh-qqbot → ctx.agents → dsh agent loop → LLM
 
 ## Installation
 
-This fork's package name is `dsh-qqbot-plus`; install it straight from GitHub: `github:i-Fyn/dsh-qqbot-plus`.
+This fork's package name is `dsh-qqbot-plus`. Two ways to install:
+
+- npm: `dsh-qqbot-plus@0.1.2`
+- straight from GitHub: `github:i-Fyn/dsh-qqbot-plus`
 Do not install `@tencent-connect/dsh-qqbot` — that is the upstream original without the humanlike, memory and meme features added here.
 
 ### Method 1: Desktop install (recommended)
 
 No command line needed — everything happens inside the app:
 
-1. **Install**: click "Plugins" in the left sidebar → "Add plugin" → enter `github:i-Fyn/dsh-qqbot-plus` → install and start now
+1. **Install**: click "Plugins" in the left sidebar → "Add plugin" → enter `dsh-qqbot-plus` (npm) or `github:i-Fyn/dsh-qqbot-plus` → install and start now
 
 <img src="./assets/docs/install.png" alt="In-app plugin install" width="560" />
 
@@ -55,6 +58,9 @@ Credentials are saved automatically after the scan; later launches need no re-sc
 
 ```bash
 # Add to a profile
+npx @deepseek-ai/dsh plugin --profile qqbot add dsh-qqbot-plus
+
+# or straight from GitHub
 npx @deepseek-ai/dsh plugin --profile qqbot add github:i-Fyn/dsh-qqbot-plus
 
 # Start

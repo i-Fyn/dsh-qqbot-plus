@@ -55,14 +55,18 @@ QQ 用户 → QQ WebSocket → dsh-qqbot → ctx.agents → dsh agent loop → L
 
 ## 安装
 
-这个 fork 的包名是 `dsh-qqbot-plus`，安装用的是 GitHub 直连：`github:i-Fyn/dsh-qqbot-plus`。
+这个 fork 的包名是 `dsh-qqbot-plus`，两种装法：
+
+- npm：`dsh-qqbot-plus@0.1.2`
+- GitHub 直连：`github:i-Fyn/dsh-qqbot-plus`
+
 不要装 `@tencent-connect/dsh-qqbot` —— 那是上游原始版，没有这里加的人味、记忆、表情包。
 
 ### 方式一：桌面版安装（推荐）
 
 无需命令行，全程在应用内完成：
 
-1. **安装**：左侧栏点击「插件」→「添加插件」→ 输入 `github:i-Fyn/dsh-qqbot-plus` → 安装并立即启动
+1. **安装**：左侧栏点击「插件」→「添加插件」→ 输入 `dsh-qqbot-plus`（npm）或 `github:i-Fyn/dsh-qqbot-plus` → 安装并立即启动
 
 <img src="./assets/docs/install.png" alt="端内添加插件" width="560" />
 
@@ -75,7 +79,10 @@ QQ 用户 → QQ WebSocket → dsh-qqbot → ctx.agents → dsh agent loop → L
 ### 方式二：手动执行
 
 ```bash
-# 安装到 profile
+# 安装到 profile（npm 版）
+npx @deepseek-ai/dsh plugin --profile qqbot add dsh-qqbot-plus
+
+# 或者从 GitHub 直装
 npx @deepseek-ai/dsh plugin --profile qqbot add github:i-Fyn/dsh-qqbot-plus
 
 # 启动
