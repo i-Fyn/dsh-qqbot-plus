@@ -6,6 +6,10 @@
 
 格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)。
 
+## [0.1.4] - 2026-11-21
+
+- 表情缩图默认长边从 360 调到 300，和 dsh-meme 一致（360 在 QQ 里显得偏大）
+
 ## [0.1.3] - 2026-11-21
 
 - 依赖 `sharp` 抬到 `^0.35.5`：这一版没有 `install` 脚本，安装不再被 pnpm 的构建脚本保护拦住，profile 里也不用再加 `allowBuilds`

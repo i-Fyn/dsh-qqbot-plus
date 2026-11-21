@@ -6,6 +6,10 @@ This file records significant dsh-qqbot updates from a product perspective, focu
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.1.4] - 2026-11-21
+
+- Sticker thumbnails now default to 300px on the long edge instead of 360 (matches dsh-meme; 360 looked oversized in QQ)
+
 ## [0.1.3] - 2026-11-21
 
 - Bumped `sharp` to `^0.35.5`: this release has no `install` script, so installs are no longer blocked by pnpm's build-script guard and no `allowBuilds` entry is needed
